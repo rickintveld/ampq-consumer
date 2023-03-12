@@ -9,14 +9,14 @@
   "private": false,
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "start": "node dist/application.js",
+    "start": "node dist/index.js",
     "start:dev": "node_modules/.bin/nodemon"
   },
   "dependencies": {
     "amqplib": "^0.10.3",
     "config": "^3.3.9",
     "dotenv": "^16.0.3",
-    "ts-log": "^2.2.5",
+    "tslog": "^4.8.2",
     "typed-inject": "^3.0.1"
   },
   "devDependencies": {

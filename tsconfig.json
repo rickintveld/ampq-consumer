@@ -6,13 +6,14 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "lib": ["es6", "dom", "esnext.asynciterable"],
-    "types": ["node", "reflect-metadata", "jest"],
+    "types": ["node"],
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "outDir": "dist",
     "inlineSourceMap": true,
-    "esModuleInterop": true,
-    "include": ["src/**/*.ts"]
-  }
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }

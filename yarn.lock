@@ -405,11 +405,6 @@ touch@^3.1.0:
   dependencies:
     nopt "~1.0.10"
 
-ts-log@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/ts-log/-/ts-log-2.2.5.tgz#aef3252f1143d11047e2cb6f7cfaac7408d96623"
-  integrity sha512-PGcnJoTBnVGy6yYNFxWVNkdcAuAMstvutN9MgDJIV6L0oG8fB+ZNNy1T+wJzah8RPGor1mZuPQkVfXNDpy9eHA==
-
 ts-node@^10.9.1:
   version "10.9.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.9.1.tgz#e73de9102958af9e1f0b168a6ff320e25adcff4b"
@@ -428,6 +423,11 @@ ts-node@^10.9.1:
     make-error "^1.1.1"
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
+
+tslog@^4.8.2:
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/tslog/-/tslog-4.8.2.tgz#dbb0c96249e387e8a711ae6e077330ba1ef102c9"
+  integrity sha512-eAKIRjxfSKYLs06r1wT7oou6Uv9VN6NW9g0JPidBlqQwPBBl5+84dm7r8zSOPVq1kyfEw1P6B3/FLSpZCorAgA==
 
 typed-inject@^3.0.1:
   version "3.0.1"
