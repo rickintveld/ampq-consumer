@@ -3,9 +3,10 @@
 ## Basic usage.
 
 1. Add new ConsumerConfig to the ServiceProvider.
-2. Create a new RequestHandler for your new incoming message
-3. Create a new Consumer class, which extends the abstract Consumer class.
-4. Inject the new consumer into the Application class and call the consumer with the RabbitMQ connection.
+2. Create a new Message
+3. Create a new RequestHandler for your new incoming message
+4. Create a new Consumer class, which extends the abstract Consumer class.
+5. Inject the new consumer into the Application class and call the consumer with the RabbitMQ connection.
 
 #
 
@@ -17,17 +18,38 @@
   } as ConsumerConfig)
 ```
 
-### 2. RequestHandler | `./src/RequestHandlers/ExampleRequestHandler.ts`
+### 2a. Message payload | `./src/Payloads/ExamplePayload.ts`
+
+```
+@Serializable() // <-- TS-jackson serializer
+export default class ExamplePayload {
+  @JsonProperty("title")
+  readonly title?: string;
+}
+```
+
+### 2b. Message | `./src/Messages/ExampleMessage.ts`
+
+```
+export default class ExampleMessage extends Message<ExamplePayload> {}
+```
+
+### 3. RequestHandler | `./src/RequestHandlers/ExampleRequestHandler.ts`
 
 ```
 export default class ExampleRequestHandler implements RequestHandler {
   public async handle(message: ConsumeMessage): Promise<void> {
-    console.log(JSON.parse(message.content.toString()));
+    const exampleMessage = deserialize(
+      message.content.toString(),
+      ExampleMessage
+    ); <-- TS-jackson deserializer
+
+    console.log(exampleMessage);
   }
 }
 ```
 
-### 3. Consumer | `./src/Consumers/ExampleConsumer.ts`
+### 4. Consumer | `./src/Consumers/ExampleConsumer.ts`
 
 ```
 export default class ExampleConsumer extends Consumer {
@@ -49,7 +71,7 @@ export default class ExampleConsumer extends Consumer {
 }
 ```
 
-### 4. Execute the consumer | `./src/Infrastructure/Application.ts`
+### 5. Execute the consumer | `./src/Infrastructure/Application.ts`
 
 ```
 await this.exampleConsumer.consume(connection);

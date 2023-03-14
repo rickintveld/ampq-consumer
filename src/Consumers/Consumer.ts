@@ -22,8 +22,11 @@ export default abstract class Consumer {
   private sendMessages(channel: Channel) {
     for (let i = 0; i < 10; i++) {
       let payload = JSON.stringify({
-        test: "TEST MESSAGE",
-        number: i,
+        action: "example_message",
+        payload: {
+          title: `Example message ${i}`,
+          content: "Auto acknowledged message",
+        },
       });
 
       channel.sendToQueue(this.config.queue, Buffer.from(payload));

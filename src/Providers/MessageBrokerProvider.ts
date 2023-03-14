@@ -10,7 +10,13 @@ export default class MessageBrokerProvider {
 
   public async provide(): Promise<Connection> {
     if (!this.connection) {
-      this.connection = await client.connect({ ...this.config });
+      this.connection = await client.connect({
+        protocol: this.config.protocol,
+        username: this.config.username,
+        password: this.config.password,
+        hostname: this.config.hostname,
+        port: this.config.port,
+      });
     }
 
     return this.connection;
