@@ -1,4 +1,5 @@
 import { createInjector } from "typed-inject";
+import config from "config";
 import dotenv from "dotenv";
 import { Logger } from "tslog";
 import Application from "../Infrastructure/Application";
@@ -22,7 +23,7 @@ export default class ServiceProvider {
         port: dotenvConfig?.RABBIT_MQ_PORT || 15672,
       } as AmpqConnectionConfig)
       .provideValue("ExampleConsumerConfig", {
-        queue: "example_queue",
+        queue: config.get("parameters.queues.example.queue"),
       } as ConsumerConfig)
       .provideClass("MessageBrokerProvider", MessageBrokerProvider)
       .provideClass("ExampleRequestHandler", ExampleRequestHandler)
