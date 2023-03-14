@@ -3,6 +3,6 @@ import RequestHandler from "./RequestHandler";
 
 export default class ExampleRequestHandler implements RequestHandler {
   public async handle(message: ConsumeMessage): Promise<void> {
-    console.log(message.content.toString());
+    console.log(JSON.parse(message.content.toString()));
   }
 }

@@ -12,20 +12,20 @@ export default abstract class Consumer {
     this.sendMessages(channel);
 
     await channel.consume(this.config.queue, this.handler(), {
-      noAck: false,
+      noAck: true,
     });
   }
+
+  public abstract handler(): any;
 
   private sendMessages(channel: Channel) {
     for (let i = 0; i < 10; i++) {
       let payload = JSON.stringify({
         test: "TEST MESSAGE",
-        number: 1,
+        number: i,
       });
 
       channel.sendToQueue(this.config.queue, Buffer.from(payload));
     }
   }
-
-  public abstract handler(): any;
 }
