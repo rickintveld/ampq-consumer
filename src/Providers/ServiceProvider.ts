@@ -13,10 +13,10 @@ export default class ServiceProvider {
 
     const injector = createInjector()
       .provideValue("AmpqConnectionConfig", {
-        type: "amqp",
-        user: dotenvConfig?.RABBIT_MQ_USER || "guest",
+        protocol: "amqp",
+        username: dotenvConfig?.RABBIT_MQ_USER || "guest",
         password: dotenvConfig?.RABBIT_MQ_PASSWORD || "guest",
-        host: dotenvConfig?.RABBIT_MQ_HOST || "localhost",
+        hostname: dotenvConfig?.RABBIT_MQ_HOST || "localhost",
         port: dotenvConfig?.RABBIT_MQ_PORT || 15672,
       } as AmpqConnectionConfig)
       .provideValue("ExampleConsumerConfig", {

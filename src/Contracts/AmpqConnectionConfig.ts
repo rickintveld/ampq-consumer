@@ -1,7 +1,7 @@
 export default interface AmpqConnectionConfig {
-  type: string;
-  user: string;
+  protocol: string;
+  username: string;
   password: string;
-  host: string;
+  hostname: string;
   port: number;
 }
