@@ -1,5 +1,5 @@
 import { Connection, Channel, ConsumeMessage } from "amqplib";
-import MessageBrokerProvider from "../Provider/MessageBrokerProvider";
+import MessageBrokerProvider from "../Providers/MessageBrokerProvider";
 import ExampleConsumer from "../Consumers/ExampleConsumer";
 
 export default class Application {

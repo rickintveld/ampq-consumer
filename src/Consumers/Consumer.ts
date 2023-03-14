@@ -18,6 +18,7 @@ export default abstract class Consumer {
 
   public abstract handler(): any;
 
+  // SEND TEST MESSAGES
   private sendMessages(channel: Channel) {
     for (let i = 0; i < 10; i++) {
       let payload = JSON.stringify({
