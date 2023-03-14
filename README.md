@@ -2,12 +2,12 @@
 
 ## Basic usage.
 
-1. Add new ConsumerConfig to the ServiceProvider.
-2. Create a new Message
-3. Create a new RequestHandler for your new incoming message
-4. Create a new Consumer class, which extends the abstract Consumer class.
-5. Inject the new consumer into the Application class and call the consumer with the RabbitMQ connection.
-6. Testing the consumer
+1. [Add new ConsumerConfig to the ServiceProvider.](#1-consumerconfig--srcprovidersserviceproviderts)
+2. [Create a new Message](#2a-message-payload--srcpayloadsexamplepayloadts)
+3. [Create a new RequestHandler for your new incoming message](#3a-requesthandler--srcrequesthandlersexamplerequesthandlerts)
+4. [Create a new Consumer class, which extends the abstract Consumer class.](#4-consumer--srcconsumersexampleconsumerts)
+5. [Inject the new consumer into the Application class and call the consumer with the RabbitMQ connection.](#5-execute-the-consumer--srcinfrastructureapplicationts)
+6. [Testing the consumer](#6-testing-the-consumer)
 
 #
 
