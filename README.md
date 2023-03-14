@@ -34,7 +34,7 @@ export default class ExamplePayload {
 export default class ExampleMessage extends Message<ExamplePayload> {}
 ```
 
-### 3. RequestHandler | `./src/RequestHandlers/ExampleRequestHandler.ts`
+### 3a. RequestHandler | `./src/RequestHandlers/ExampleRequestHandler.ts`
 
 ```
 export default class ExampleRequestHandler implements RequestHandler {
@@ -47,6 +47,16 @@ export default class ExampleRequestHandler implements RequestHandler {
     console.log(exampleMessage);
   }
 }
+```
+
+### 3b. RequestHandler injection | `./src/RequestHandlers/ExampleRequestHandler.ts`
+
+```
+// register the service provider
+const provider = new ServiceProvider().register();
+// resolve the class by it's identifier
+const logger = provider.resolve("Logger");
+logger.info('Successfully injected the Logger');
 ```
 
 ### 4. Consumer | `./src/Consumers/ExampleConsumer.ts`
@@ -76,3 +86,7 @@ export default class ExampleConsumer extends Consumer {
 ```
 await this.exampleConsumer.consume(connection);
 ```
+
+## Todo's
+
+- Remove the `sendMessages` method from `./src/Consumers/Consumer.ts`
