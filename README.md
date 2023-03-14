@@ -7,6 +7,7 @@
 3. Create a new RequestHandler for your new incoming message
 4. Create a new Consumer class, which extends the abstract Consumer class.
 5. Inject the new consumer into the Application class and call the consumer with the RabbitMQ connection.
+6. Testing the consumer
 
 #
 
@@ -87,6 +88,6 @@ export default class ExampleConsumer extends Consumer {
 await this.exampleConsumer.consume(connection);
 ```
 
-## Todo's
+### 6. Testing the consumer
 
-- Remove the `sendMessages` method from `./src/Consumers/Consumer.ts`
+- Run `yarn fake` to send 10 fake message to the `example_queue`.
