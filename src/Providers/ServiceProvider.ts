@@ -1,5 +1,6 @@
 import { createInjector } from "typed-inject";
 import dotenv from "dotenv";
+import { Logger } from "tslog";
 import Application from "../Infrastructure/Application";
 import ExampleRequestHandler from "../RequestHandlers/ExampleRequestHandler";
 import AmpqConnectionConfig from "../Contracts/AmpqConnectionConfig";
@@ -12,6 +13,7 @@ export default class ServiceProvider {
     const dotenvConfig = dotenv.config().parsed;
 
     const injector = createInjector()
+      .provideClass("Logger", Logger)
       .provideValue("AmpqConnectionConfig", {
         protocol: "amqp",
         username: dotenvConfig?.RABBIT_MQ_USER || "guest",
