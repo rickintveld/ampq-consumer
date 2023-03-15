@@ -13,7 +13,7 @@
 
 ### 1. ConsumerConfig | `./src/Providers/ServiceProvider.ts`
 
-```
+```typescript
 .provideValue("ExampleConsumerConfig", {
     queue: "example_queue",
   } as ConsumerConfig)
@@ -21,7 +21,7 @@
 
 ### 2a. Message payload | `./src/Payloads/ExamplePayload.ts`
 
-```
+```typescript
 @Serializable() // <-- TS-jackson serializer
 export default class ExamplePayload {
   @JsonProperty("title")
@@ -31,19 +31,19 @@ export default class ExamplePayload {
 
 ### 2b. Message | `./src/Messages/ExampleMessage.ts`
 
-```
+```typescript
 export default class ExampleMessage extends Message<ExamplePayload> {}
 ```
 
 ### 3a. RequestHandler | `./src/RequestHandlers/ExampleRequestHandler.ts`
 
-```
+```typescript
 export default class ExampleRequestHandler implements RequestHandler {
   public async handle(message: ConsumeMessage): Promise<void> {
     const exampleMessage = deserialize(
       message.content.toString(),
       ExampleMessage
-    ); <-- TS-jackson deserializer
+    ); // <-- TS-jackson deserializer
 
     console.log(exampleMessage);
   }
@@ -52,17 +52,17 @@ export default class ExampleRequestHandler implements RequestHandler {
 
 ### 3b. RequestHandler injection | `./src/RequestHandlers/ExampleRequestHandler.ts`
 
-```
+```typescript
 // register the service provider
 const provider = new ServiceProvider().register();
 // resolve the class by it's identifier
 const logger = provider.resolve("Logger");
-logger.info('Successfully injected the Logger');
+logger.info("Successfully injected the Logger");
 ```
 
 ### 4. Consumer | `./src/Consumers/ExampleConsumer.ts`
 
-```
+```typescript
 export default class ExampleConsumer extends Consumer {
   public static inject = [
     "ExampleRequestHandler", // <-- The new RequestHandler
@@ -84,7 +84,7 @@ export default class ExampleConsumer extends Consumer {
 
 ### 5. Execute the consumer | `./src/Infrastructure/Application.ts`
 
-```
+```typescript
 await this.exampleConsumer.consume(connection);
 ```
 
